@@ -1,0 +1,287 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-base: #0f1115;
+    --bg-surface: #1a1d24;
+    --bg-surface-hover: #232730;
+    --accent-primary: #8b5cf6;
+    --accent-hover: #7c3aed;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding-top: 80px;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Navbar */
+header {
+    background-color: rgba(15, 17, 21, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.navbar .logo::after {
+    content: '.';
+    color: var(--accent-primary);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent-primary);
+}
+
+/* Encabezado y Buscador */
+h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+.busqueda input {
+    width: 100%;
+    padding: 15px 20px;
+    font-size: 1.1em;
+    margin-bottom: 30px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    transition: var(--transition);
+}
+
+.busqueda input:focus {
+    outline: none;
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.2);
+}
+
+/* Contenedor de Filtros */
+.filtros-container {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+
+.categoria, .filtro-fechas, .filtro-instructor {
+    position: relative;
+    display: inline-block;
+}
+
+.categoria-btn, .fecha-btn, .instructor-btn {
+    padding: 12px 20px;
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.categoria-btn:hover, .fecha-btn:hover, .instructor-btn:hover {
+    background-color: var(--bg-surface-hover);
+    border-color: var(--accent-primary);
+}
+
+/* Dropdowns */
+.dropdown-content, .dropdown-content-fecha, .dropdown-content-instructor {
+    display: none;
+    position: absolute;
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    margin-top: 10px;
+    padding: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    z-index: 100;
+    min-width: 250px;
+}
+
+.categoria:hover .dropdown-content,
+.filtro-fechas:hover .dropdown-content-fecha,
+.filtro-instructor:hover .dropdown-content-instructor {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    animation: fadeIn 0.2s ease;
+}
+
+.btn-etiqueta {
+    padding: 10px;
+    background-color: transparent;
+    color: var(--text-muted);
+    border: none;
+    text-align: left;
+    cursor: pointer;
+    border-radius: 6px;
+    transition: var(--transition);
+}
+
+.btn-etiqueta:hover {
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--accent-primary);
+}
+
+.dropdown-content-fecha label, .dropdown-content-instructor label {
+    color: var(--text-muted);
+    font-size: 0.9em;
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.dropdown-content-fecha input, .dropdown-content-instructor select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.btn-filtrar-fecha, .btn-filtrar-instructor {
+    padding: 10px;
+    background-color: var(--accent-primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-filtrar-fecha:hover, .btn-filtrar-instructor:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Grid de Cursos */
+#cursos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+    padding-bottom: 40px;
+}
+
+.course-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border-color: rgba(139, 92, 246, 0.4);
+}
+
+.course-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.course-content {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.course-content h3 {
+    font-size: 1.2em;
+    color: var(--text-main);
+    margin-bottom: 10px;
+}
+
+.course-content p {
+    color: var(--text-muted);
+    font-size: 0.95em;
+    margin-bottom: 15px;
+    flex: 1;
+}
+
+.price {
+    font-size: 1.3em;
+    color: var(--accent-primary);
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.btn-buy {
+    text-align: center;
+    padding: 12px;
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--accent-primary);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-buy:hover {
+    background-color: var(--accent-primary);
+    color: white;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}

@@ -1,0 +1,303 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-base: #0f1115;
+    --bg-surface: #1a1d24;
+    --bg-surface-hover: #232730;
+    --accent-primary: #8b5cf6;
+    --accent-hover: #7c3aed;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Header Navbar Glassmorphism */
+header {
+    background-color: rgba(15, 17, 21, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+}
+
+.navbar .logo::after {
+    content: '.';
+    color: var(--accent-primary);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.nav-links a:hover {
+    color: var(--accent-primary);
+}
+
+/* Main Content */
+main {
+    padding: 100px 0 60px;
+}
+
+main h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+    color: var(--text-main);
+    animation: fadeIn 0.8s ease-out;
+}
+
+main p {
+    font-size: 1.2em;
+    color: var(--text-muted);
+    margin-bottom: 40px;
+}
+
+/* Carrusel Adaptado */
+.slide {
+    position: relative;
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 50px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.slide-inner {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    background-color: #000;
+}
+
+.slide-open:checked + .slide-item {
+    position: static;
+    opacity: 1;
+}
+
+.slide-item {
+    position: absolute;
+    opacity: 0;
+    transition: opacity 0.6s ease-out;
+    width: 100%;
+    height: 100%;
+}
+
+.slide-item img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.8;
+}
+
+.slide-control {
+    background: rgba(15, 17, 21, 0.6);
+    backdrop-filter: blur(4px);
+    border: 1px solid var(--border-color);
+    border-radius: 50%;
+    color: var(--text-main);
+    cursor: pointer;
+    display: none;
+    font-size: 30px;
+    height: 45px;
+    line-height: 40px;
+    position: absolute;
+    top: 50%;
+    transform: translate(0, -50%);
+    text-align: center;
+    width: 45px;
+    z-index: 10;
+    transition: var(--transition);
+}
+
+.slide-control.prev { left: 2%; }
+.slide-control.next { right: 2%; }
+
+.slide-control:hover {
+    background: var(--accent-primary);
+    color: white;
+}
+
+#slide-1:checked ~ .control-1,
+#slide-2:checked ~ .control-2,
+#slide-3:checked ~ .control-3 {
+    display: block;
+}
+
+.slide-indicador {
+    list-style: none;
+    position: absolute;
+    bottom: 5%;
+    left: 0;
+    right: 0;
+    text-align: center;
+    z-index: 10;
+}
+
+.slide-indicador li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.slide-circulo {
+    color: rgba(255, 255, 255, 0.4);
+    cursor: pointer;
+    font-size: 40px;
+    transition: var(--transition);
+}
+
+.slide-circulo:hover { color: var(--text-main); }
+
+#slide-1:checked ~ .control-1 ~ .slide-indicador li:nth-child(1) .slide-circulo,
+#slide-2:checked ~ .control-2 ~ .slide-indicador li:nth-child(2) .slide-circulo,
+#slide-3:checked ~ .control-3 ~ .slide-indicador li:nth-child(3) .slide-circulo {
+    color: var(--accent-primary);
+}
+
+/* Categorías de Cursos */
+.courses-section {
+    margin-bottom: 60px;
+}
+
+.courses-section h2 {
+    margin-bottom: 25px;
+    font-size: 2em;
+    color: var(--text-main);
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.courses-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.course-card {
+    background: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: var(--transition);
+    display: flex;
+    flex-direction: column;
+}
+
+.course-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    border-color: rgba(139, 92, 246, 0.4);
+}
+
+.course-card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.course-info {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+}
+
+.course-info h3 {
+    font-size: 1.25em;
+    margin-bottom: 10px;
+    color: var(--text-main);
+}
+
+.course-info p {
+    font-size: 0.95em;
+    margin-bottom: 15px;
+    color: var(--text-muted);
+    flex: 1;
+}
+
+.course-info .price {
+    font-size: 1.3em;
+    font-weight: bold;
+    color: var(--accent-primary);
+    margin-bottom: 20px;
+}
+
+.btn-comprar {
+    display: block;
+    text-align: center;
+    background-color: rgba(139, 92, 246, 0.1);
+    color: var(--accent-primary);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    padding: 12px 20px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-comprar:hover {
+    background-color: var(--accent-primary);
+    color: white;
+}
+
+footer {
+    background-color: var(--bg-surface);
+    border-top: 1px solid var(--border-color);
+    color: var(--text-muted);
+    text-align: center;
+    padding: 25px 0;
+    width: 100%;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}

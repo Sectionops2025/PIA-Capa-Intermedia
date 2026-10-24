@@ -1,0 +1,50 @@
+/* Estilos para la tabla de usuarios deshabilitados */
+#usuarios-deshabilitados-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    background-color: var(--bg-surface);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+#usuarios-deshabilitados-table th, #usuarios-deshabilitados-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+#usuarios-deshabilitados-table th {
+    background-color: rgba(0,0,0,0.2);
+    color: var(--text-main);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+#usuarios-deshabilitados-table tr:hover td {
+    background-color: var(--bg-surface-hover);
+    color: var(--text-main);
+}
+
+.habilitar-btn {
+    padding: 8px 16px;
+    background-color: rgba(16, 185, 129, 0.1);
+    color: #10b981;
+    border: 1px solid rgba(16, 185, 129, 0.3);
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.habilitar-btn:hover {
+    background-color: #10b981;
+    color: white;
+    box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+}
