@@ -1,0 +1,266 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+:root {
+    --bg-base: #0f1115;
+    --bg-surface: #1a1d24;
+    --bg-surface-hover: #232730;
+    --accent-primary: #8b5cf6;
+    --text-main: #f8fafc;
+    --text-muted: #94a3b8;
+    --border-color: rgba(255, 255, 255, 0.08);
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* =========================================
+   Navbar y Header
+========================================= */
+header {
+    background-color: rgba(15, 17, 21, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border-color);
+    padding: 15px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar .logo {
+    font-size: 1.8em;
+    font-weight: 700;
+    color: var(--text-main);
+    text-decoration: none;
+    letter-spacing: -0.5px;
+}
+
+.navbar .logo::after {
+    content: '.';
+    color: var(--accent-primary);
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 1.05em;
+    font-weight: 600;
+    transition: var(--transition);
+    position: relative;
+}
+
+.nav-links a:hover, .nav-links a.active {
+    color: var(--accent-primary);
+}
+
+/* =========================================
+   Sidebar
+========================================= */
+.sidebar {
+    width: 280px;
+    background-color: var(--bg-surface);
+    border-right: 1px solid var(--border-color);
+    padding: 40px 20px;
+    height: calc(100vh - 70px);
+    position: fixed;
+    top: 70px;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebar ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar ul li a {
+    text-decoration: none;
+    color: var(--text-muted);
+    font-weight: 600;
+    display: block;
+    padding: 12px 20px;
+    border-radius: 8px;
+    transition: var(--transition);
+}
+
+.sidebar ul li a:hover, .sidebar ul li a.active {
+    background-color: var(--bg-surface-hover);
+    color: var(--accent-primary);
+    transform: translateX(5px);
+}
+
+/* =========================================
+   Contenedor Principal y Categorías
+========================================= */
+.profile-container {
+    display: flex;
+    padding-top: 70px;
+    min-height: 100vh;
+}
+
+.profile-content {
+    margin-left: 280px;
+    padding: 40px;
+    width: calc(100% - 280px);
+}
+
+.profile-content h1 {
+    font-size: 2.5em;
+    margin-bottom: 20px;
+    color: var(--text-main);
+}
+
+/* Botón de Nueva Categoría */
+.btn-nueva-cat {
+    padding: 10px 20px;
+    background-color: var(--accent-primary);
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: var(--transition);
+    margin-bottom: 20px;
+}
+
+.btn-nueva-cat:hover {
+    background-color: #7c3aed;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.4);
+}
+
+/* Tabla de categorías */
+#categorias-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    background-color: var(--bg-surface);
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+#categorias-table th, #categorias-table td {
+    padding: 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-muted);
+}
+
+#categorias-table th {
+    background-color: rgba(0,0,0,0.2);
+    color: var(--text-main);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    letter-spacing: 1px;
+}
+
+#categorias-table tr:hover td {
+    background-color: var(--bg-surface-hover);
+    color: var(--text-main);
+}
+
+/* Botones de acción */
+.editar-btn, .eliminar-btn {
+    padding: 8px 16px;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.9em;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.editar-btn { 
+    background-color: rgba(245, 158, 11, 0.1); 
+    color: var(--warning); 
+    border: 1px solid rgba(245, 158, 11, 0.3); 
+}
+.editar-btn:hover { 
+    background-color: var(--warning); 
+    color: #000; 
+}
+
+.eliminar-btn { 
+    background-color: rgba(239, 68, 68, 0.1); 
+    color: var(--danger); 
+    border: 1px solid rgba(239, 68, 68, 0.3); 
+}
+.eliminar-btn:hover { 
+    background-color: var(--danger); 
+    color: white; 
+}
+
+/* =========================================
+   Modales Bootstrap
+========================================= */
+.modal-content {
+    background-color: var(--bg-surface);
+    color: var(--text-main);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+}
+
+.modal-header {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.modal-footer {
+    border-top: 1px solid var(--border-color);
+}
+
+.form-control {
+    background-color: var(--bg-base);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+}
+
+.form-control:focus {
+    background-color: var(--bg-base);
+    color: var(--text-main);
+    border-color: var(--accent-primary);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.25);
+}
+
+.form-label { color: var(--text-muted); }
+.btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
